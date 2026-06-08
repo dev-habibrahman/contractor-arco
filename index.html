@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCO Group — Las Vegas General Contractor | Design Blueprint</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.0.8/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/open-sans@5.0.8/index.min.css">
+<style>
+  :root{
+    --navy:#1B3A6B;
+    --navy-dark:#0F2648;
+    --blue:#2C5AA0;
+    --blue-light:#4A7BC7;
+    --silver:#C9D1DC;
+    --gray:#6B7280;
+    --bg:#F7F9FC;
+    --white:#FFFFFF;
+    --gold:#C9A15B;
+  }
+  *{font-family:'Open Sans',sans-serif}
+  h1,h2,h3,h4,h5,h6,.heading{font-family:'Montserrat',sans-serif;letter-spacing:-0.01em}
+  body{background:var(--bg);color:#1F2937}
+  .navy{color:var(--navy)}
+  .bg-navy{background:var(--navy)}
+  .bg-navy-dark{background:var(--navy-dark)}
+  .bg-blue{background:var(--blue)}
+  .text-blue{color:var(--blue)}
+  .text-blue-light{color:var(--blue-light)}
+  .border-navy{border-color:var(--navy)}
+  .btn-primary{background:var(--navy);color:#fff;transition:.3s}
+  .btn-primary:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 25px rgba(27,58,107,.3)}
+  .btn-outline{border:2px solid var(--navy);color:var(--navy);transition:.3s}
+  .btn-outline:hover{background:var(--navy);color:#fff}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:#B08A47}
+  .page{display:none;animation:fade .4s ease}
+  .page.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .nav-link{position:relative;padding:8px 0;cursor:pointer}
+  .nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:.3s}
+  .nav-link.active::after,.nav-link:hover::after{width:100%}
+  .nav-link.active{color:var(--navy);font-weight:700}
+  .service-card{transition:.3s;border:1px solid #E5E7EB}
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(27,58,107,.12);border-color:var(--blue-light)}
+  .project-card{overflow:hidden;transition:.3s}
+  .project-card:hover img{transform:scale(1.08)}
+  .project-card img{transition:.5s}
+  .hero-gradient{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 50%,var(--blue) 100%)}
+  .section-divider{height:4px;background:linear-gradient(90deg,var(--navy),var(--blue-light),var(--gold))}
+  .before-after{position:relative;overflow:hidden}
+  .stat-number{font-size:3rem;font-weight:800;color:var(--navy);line-height:1}
+  .tab-btn{padding:10px 20px;cursor:pointer;border-bottom:3px solid transparent;transition:.3s}
+  .tab-btn.active{border-color:var(--gold);color:var(--navy);font-weight:700}
+  .process-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--navy),var(--blue-light))}
+  .process-dot{width:20px;height:20px;background:var(--gold);border:4px solid var(--navy);border-radius:50%;z-index:2}
+  .check-list li{padding-left:28px;position:relative;margin-bottom:10px}
+  .check-list li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:1.2rem}
+  .floating{animation:float 4s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .skyline-bg{background-image:linear-gradient(180deg,rgba(15,38,72,0) 0%,rgba(15,38,72,0.85) 100%),url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><path fill="%231B3A6B" d="M0,200 L0,150 L50,150 L50,100 L80,100 L80,60 L100,60 L100,100 L130,100 L130,140 L160,140 L160,80 L180,80 L180,40 L200,40 L200,80 L230,80 L230,120 L260,120 L260,90 L280,90 L280,50 L300,50 L300,90 L330,90 L330,130 L360,130 L360,70 L390,70 L390,110 L420,110 L420,60 L440,60 L440,100 L470,100 L470,140 L500,140 L500,80 L530,80 L530,120 L560,120 L560,70 L590,70 L590,100 L620,100 L620,50 L650,50 L650,90 L680,90 L680,130 L710,130 L710,80 L740,80 L740,110 L770,110 L770,60 L800,60 L800,100 L830,100 L830,140 L860,140 L860,90 L890,90 L890,120 L920,120 L920,70 L950,70 L950,100 L980,100 L980,130 L1010,130 L1010,80 L1040,80 L1040,110 L1070,110 L1070,60 L1100,60 L1100,100 L1130,100 L1130,140 L1160,140 L1160,90 L1200,90 L1200,200 Z"/></svg>');background-size:cover;background-position:bottom}
+  .card-shadow{box-shadow:0 4px 20px rgba(27,58,107,.08)}
+  .input-field{width:100%;padding:12px 16px;border:1px solid #D1D5DB;border-radius:6px;transition:.3s;font-family:inherit}
+  .input-field:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(44,90,160,.15)}
+  .badge{display:inline-block;padding:6px 14px;background:rgba(201,161,91,.15);color:var(--gold);font-weight:600;border-radius:20px;font-size:.8rem;letter-spacing:.05em}
+  .scroll-indicator{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:100;transition:width .2s}
+  /* Logo in navbar styling */
+  .logo-nav{
+    height:70px;
+    width:auto;
+    object-fit:contain;
+    transition:all .3s ease;
+  }
+  .logo-nav:hover{transform:scale(1.03)}
+  @media(max-width:768px){
+    .logo-nav{height:55px}
+  }
+  @media(max-width:768px){.process-line{left:20px}}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-indicator" id="scrollProgress"></div>
+
+<!-- Top Bar -->
+<div class="bg-navy-dark text-white text-xs py-2">
+  <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-2">
+    <div class="flex items-center gap-4">
+      <span>📞 <a href="tel:+17025551234" class="hover:text-yellow-300">(702) 555-1234</a></span>
+      <span class="hidden md:inline">✉ info@arcogroup.com</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <span> Mon–Sat: 7AM–6PM</span>
+      <span class="hidden md:inline"> Las Vegas, NV</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Navigation with Logo -->
+<nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+    <!-- Logo in Navbar -->
+    <a href="#" onclick="showPage('home');return false;" class="flex items-center flex-shrink-0">
+      <img src="https://i.ibb.co.com/0y0V4rBj/logo1.png" 
+           alt="ARCO Group General Contractor Logo" 
+           class="logo-nav">
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <div class="nav-link active" onclick="showPage('home')">Home</div>
+      <div class="nav-link" onclick="showPage('about')">About Us</div>
+      <div class="nav-link" onclick="showPage('services')">Services</div>
+      <div class="nav-link" onclick="showPage('projects')">Projects</div>
+      <div class="nav-link" onclick="showPage('contact')">Contact</div>
+      <a href="tel:+17025551234" class="btn-primary px-5 py-2.5 rounded-md font-semibold text-sm">GET A QUOTE</a>
+    </div>
+    <button class="md:hidden text-2xl navy" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-6 py-4 space-y-3">
+    <div class="nav-link" onclick="showPage('home')">Home</div>
+    <div class="nav-link" onclick="showPage('about')">About Us</div>
+    <div class="nav-link" onclick="showPage('services')">Services</div>
+    <div class="nav-link" onclick="showPage('projects')">Projects</div>
+    <div class="nav-link" onclick="showPage('contact')">Contact</div>
+    <a href="tel:+17025551234" class="btn-primary block text-center px-5 py-2.5 rounded-md font-semibold text-sm">GET A QUOTE</a>
+  </div>
+</nav>
+
+<!-- ============ HOME PAGE ============ -->
+<div id="home" class="page active">
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle at 20% 50%, rgba(255,255,255,.1) 0%, transparent 50%)"></div>
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="badge" style="background:rgba(201,161,91,.2)">★ LICENSED • BONDED • INSURED</span>
+        <h1 class="heading text-4xl md:text-6xl font-black mt-4 leading-tight">
+          Building Las Vegas<br>
+          <span style="color:var(--gold)">One Home at a Time</span>
+        </h1>
+        <p class="text-lg md:text-xl mt-6 text-blue-100 max-w-lg">
+          From luxury remodels to full new construction, ARCO Group delivers premium general contracting services across the Las Vegas Valley with integrity, precision, and unmatched craftsmanship.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="#contact" class="btn-gold px-7 py-3.5 rounded-md font-bold shadow-lg">REQUEST FREE ESTIMATE →</a>
+          <a href="#services" class="border-2 border-white px-7 py-3.5 rounded-md font-bold hover:bg-white hover:text-navy transition">OUR SERVICES</a>
+        </div>
+        <div class="flex gap-8 mt-10 pt-8 border-t border-white/20">
+          <div><div class="stat-number text-white">25+</div><div class="text-sm text-blue-200">Years Experience</div></div>
+          <div><div class="stat-number text-white">800+</div><div class="text-sm text-blue-200">Projects Done</div></div>
+          <div><div class="stat-number text-white">5★</div><div class="text-sm text-blue-200">Rated on Google</div></div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="floating">
+          <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Luxury Las Vegas Home" class="rounded-xl w-full h-80 object-cover shadow-2xl">
+          </div>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-white text-navy p-5 rounded-xl shadow-2xl hidden md:block">
+          <div class="text-3xl font-black">A+</div>
+          <div class="text-xs text-gray-600">BBB Accredited<br>Since 2001</div>
+        </div>
+      </div>
+    </div>
+    <div class="h-16 bg-white" style="clip-path:polygon(0 100%,100% 100%,100% 0,0 60%)"></div>
+  </section>
+
+  <!-- Company Introduction -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="badge">ABOUT ARCO GROUP</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Your Trusted Las Vegas General Contractor</h2>
+        <p class="text-gray-600 mt-6 text-lg leading-relaxed">
+          For over two decades, ARCO Group has been the cornerstone of quality construction in Southern Nevada. We combine old-school craftsmanship with modern building technology to deliver homes and renovations that stand the test of time — and the Nevada sun.
+        </p>
+        <ul class="check-list mt-6 text-gray-700">
+          <li>Fully licensed Nevada General Contractor (License #0084521)</li>
+          <li>Family-owned and locally operated since 2001</li>
+          <li>Specialists in desert-climate construction techniques</li>
+          <li>Transparent pricing with no hidden fees</li>
+        </ul>
+        <a href="#" class="btn-primary inline-block mt-8 px-7 py-3 rounded-md font-semibold">LEARN MORE ABOUT US →</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400" class="rounded-xl h-48 w-full object-cover">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400" class="rounded-xl h-48 w-full object-cover mt-8">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400" class="rounded-xl h-48 w-full object-cover">
+        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=400" class="rounded-xl h-48 w-full object-cover mt-8">
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Highlights -->
+  <section class="py-20" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="badge">WHAT WE DO</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Our Core Services</h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Comprehensive general contracting solutions tailored to Las Vegas homeowners, developers, and property managers.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="service-card bg-white rounded-xl p-8">
+          <div class="w-14 h-14 bg-navy rounded-lg flex items-center justify-center text-white text-2xl mb-5">🏠</div>
+          <h3 class="heading text-xl font-bold navy">Home Remodeling</h3>
+          <p class="text-gray-600 mt-3 text-sm leading-relaxed">Transform your existing space with kitchen, bathroom, and whole-home renovations that add value and beauty.</p>
+          <a href="#" class="text-blue font-semibold text-sm mt-4 inline-block">Learn More →</a>
+        </div>
+        <div class="service-card bg-white rounded-xl p-8">
+          <div class="w-14 h-14 bg-navy rounded-lg flex items-center justify-center text-white text-2xl mb-5">🏗️</div>
+          <h3 class="heading text-xl font-bold navy">New Home Construction</h3>
+          <p class="text-gray-600 mt-3 text-sm leading-relaxed">Custom-built homes from the ground up, designed for the Las Vegas climate and your lifestyle.</p>
+          <a href="#" class="text-blue font-semibold text-sm mt-4 inline-block">Learn More →</a>
+        </div>
+        <div class="service-card bg-white rounded-xl p-8">
+          <div class="w-14 h-14 bg-navy rounded-lg flex items-center justify-center text-white text-2xl mb-5">🔧</div>
+          <h3 class="heading text-xl font-bold navy">Home Repairs</h3>
+          <p class="text-gray-600 mt-3 text-sm leading-relaxed">From minor fixes to major structural repairs — fast, reliable, and backed by our quality guarantee.</p>
+          <a href="#" class="text-blue font-semibold text-sm mt-4 inline-block">Learn More →</a>
+        </div>
+        <div class="service-card bg-white rounded-xl p-8">
+          <div class="w-14 h-14 bg-navy rounded-lg flex items-center justify-center text-white text-2xl mb-5">💧</div>
+          <h3 class="heading text-xl font-bold navy">Water Damage Restoration</h3>
+          <p class="text-gray-600 mt-3 text-sm leading-relaxed">24/7 emergency response to mitigate water damage, prevent mold, and restore your property.</p>
+          <a href="#" class="text-blue font-semibold text-sm mt-4 inline-block">Learn More →</a>
+        </div>
+        <div class="service-card bg-white rounded-xl p-8">
+          <div class="w-14 h-14 bg-navy rounded-lg flex items-center justify-center text-white text-2xl mb-5">📋</div>
+          <h3 class="heading text-xl font-bold navy">Insurance Claim Restoration</h3>
+          <p class="text-gray-600 mt-3 text-sm leading-relaxed">We work directly with your insurance company to maximize your claim and minimize your stress.</p>
+          <a href="#" class="text-blue font-semibold text-sm mt-4 inline-block">Learn More →</a>
+        </div>
+        <div class="bg-navy rounded-xl p-8 text-white flex flex-col justify-between">
+          <div>
+            <h3 class="heading text-xl font-bold">Need Something Else?</h3>
+            <p class="text-blue-200 mt-3 text-sm">We handle commercial projects, additions, and specialty builds. Let's talk.</p>
+          </div>
+          <a href="#contact" class="btn-gold px-5 py-3 rounded-md font-bold text-center mt-6">CONTACT US →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="badge">WHY ARCO GROUP</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Built on Trust. Proven by Results.</h2>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto bg-blue/10 rounded-full flex items-center justify-center text-3xl mb-4"></div>
+          <h4 class="heading font-bold navy">25+ Years Experience</h4>
+          <p class="text-gray-600 text-sm mt-2">Two decades of proven excellence in the Las Vegas market.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto bg-blue/10 rounded-full flex items-center justify-center text-3xl mb-4">📜</div>
+          <h4 class="heading font-bold navy">Fully Licensed</h4>
+          <p class="text-gray-600 text-sm mt-2">Nevada State License, bonded, and fully insured for your protection.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto bg-blue/10 rounded-full flex items-center justify-center text-3xl mb-4">💰</div>
+          <h4 class="heading font-bold navy">Transparent Pricing</h4>
+          <p class="text-gray-600 text-sm mt-2">Detailed quotes with no surprises. We stand behind every dollar.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 mx-auto bg-blue/10 rounded-full flex items-center justify-center text-3xl mb-4">⚡</div>
+          <h4 class="heading font-bold navy">On-Time Delivery</h4>
+          <p class="text-gray-600 text-sm mt-2">95% of our projects finish on or ahead of schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-20" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-between items-end mb-12 flex-wrap gap-4">
+        <div>
+          <span class="badge">RECENT WORK</span>
+          <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Featured Projects</h2>
+        </div>
+        <a href="#" class="btn-outline px-6 py-3 rounded-md font-semibold text-sm">VIEW ALL PROJECTS →</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="project-card rounded-xl bg-white card-shadow">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <span class="text-xs text-blue font-bold">SUMMERLIN</span>
+            <h3 class="heading font-bold navy mt-1">Modern Desert Villa</h3>
+            <p class="text-gray-600 text-sm mt-2">Complete new construction — 4,200 sq ft luxury home.</p>
+          </div>
+        </div>
+        <div class="project-card rounded-xl bg-white card-shadow">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <span class="text-xs text-blue font-bold">HENDERSON</span>
+            <h3 class="heading font-bold navy mt-1">Kitchen & Bath Remodel</h3>
+            <p class="text-gray-600 text-sm mt-2">Full gut renovation with premium finishes.</p>
+          </div>
+        </div>
+        <div class="project-card rounded-xl bg-white card-shadow">
+          <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <span class="text-xs text-blue font-bold">LAS VEGAS</span>
+            <h3 class="heading font-bold navy mt-1">Water Damage Restoration</h3>
+            <p class="text-gray-600 text-sm mt-2">Emergency response and full rebuild in 60 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="badge">CLIENT STORIES</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">What Our Clients Say</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-blue/5 p-8 rounded-xl border border-blue/10">
+          <div class="text-yellow-500 text-xl mb-3">★★★★★</div>
+          <p class="text-gray-700 italic">"ARCO Group transformed our 1980s ranch into a modern masterpiece. The attention to detail and communication throughout the project was exceptional."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold">MJ</div>
+            <div><div class="font-bold navy">Michael Johnson</div><div class="text-xs text-gray-500">Homeowner, Summerlin</div></div>
+          </div>
+        </div>
+        <div class="bg-blue/5 p-8 rounded-xl border border-blue/10">
+          <div class="text-yellow-500 text-xl mb-3">★★★★★</div>
+          <p class="text-gray-700 italic">"After a major pipe burst, ARCO handled everything — from the emergency response to working with our insurance. Couldn't be happier with the result."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold">SR</div>
+            <div><div class="font-bold navy">Sarah Rodriguez</div><div class="text-xs text-gray-500">Homeowner, Henderson</div></div>
+          </div>
+        </div>
+        <div class="bg-blue/5 p-8 rounded-xl border border-blue/10">
+          <div class="text-yellow-500 text-xl mb-3">★★★★★</div>
+          <p class="text-gray-700 italic">"As a property manager with 40+ units, I've worked with many contractors. ARCO is the only one I trust for consistent, quality work."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold">DK</div>
+            <div><div class="font-bold navy">David Kim</div><div class="text-xs text-gray-500">Property Manager, LV</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 hero-gradient text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'60\' height=\'60\'><path d=\'M0 0h60v60H0z\' fill=\'none\'/><path d=\'M30 0v60M0 30h60\' stroke=\'%23fff\' stroke-width=\'1\'/></svg>')"></div>
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+      <h2 class="heading text-3xl md:text-5xl font-black">Ready to Build Something Great?</h2>
+      <p class="text-blue-100 mt-4 text-lg">Get your free, no-obligation estimate today. We respond within 24 hours.</p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8">
+        <a href="#contact" class="btn-gold px-8 py-4 rounded-md font-bold text-lg shadow-xl">GET FREE ESTIMATE →</a>
+        <a href="tel:+17025551234" class="border-2 border-white px-8 py-4 rounded-md font-bold text-lg hover:bg-white hover:text-navy transition">📞 (702) 555-1234</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ ABOUT PAGE ============ -->
+<div id="about" class="page">
+
+  <section class="hero-gradient text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="badge" style="background:rgba(201,161,91,.2)">ABOUT ARCO GROUP</span>
+      <h1 class="heading text-4xl md:text-6xl font-black mt-4">Our Story, Your Home</h1>
+      <p class="text-blue-100 mt-4 text-lg max-w-2xl">Two decades of building trust, one Las Vegas home at a time.</p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800" class="rounded-2xl shadow-2xl">
+      </div>
+      <div>
+        <span class="badge">OUR STORY</span>
+        <h2 class="heading text-3xl md:text-4xl font-black mt-4 navy">From a Small Crew to Las Vegas's Most Trusted Builder</h2>
+        <p class="text-gray-600 mt-6 leading-relaxed">
+          ARCO Group was founded in 2001 by a small team of Las Vegas natives who believed the construction industry deserved better — better craftsmanship, better communication, and better results. What started as a three-person remodeling crew has grown into a full-service general contracting firm serving the entire Las Vegas Valley.
+        </p>
+        <p class="text-gray-600 mt-4 leading-relaxed">
+          Today, we're proud to be a family-owned business with over 50 skilled tradespeople, a fleet of modern equipment, and a reputation built on delivering projects on time, on budget, and beyond expectations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="badge">WHAT DRIVES US</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Our Mission & Values</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl card-shadow border-t-4" style="border-color:var(--navy)">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="heading text-xl font-bold navy">Our Mission</h3>
+          <p class="text-gray-600 mt-3">To deliver exceptional construction services that enhance the lives of Las Vegas homeowners through quality craftsmanship, honest communication, and unwavering integrity.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl card-shadow border-t-4" style="border-color:var(--blue)">
+          <div class="text-4xl mb-4"></div>
+          <h3 class="heading text-xl font-bold navy">Our Promise</h3>
+          <p class="text-gray-600 mt-3">We treat every home like it's our own. Transparent pricing, clean job sites, respectful crews, and a commitment to finishing what we start — every single time.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl card-shadow border-t-4" style="border-color:var(--gold)">
+          <div class="text-4xl mb-4">⭐</div>
+          <h3 class="heading text-xl font-bold navy">Our Standard</h3>
+          <p class="text-gray-600 mt-3">Premium materials. Master-level tradespeople. Industry-leading warranties. We don't cut corners — we build legacies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="badge">LOCAL EXPERTISE</span>
+        <h2 class="heading text-3xl md:text-4xl font-black mt-4 navy">Proudly Serving the Las Vegas Valley</h2>
+        <p class="text-gray-600 mt-6 leading-relaxed">
+          We know Las Vegas — its climate, its soil, its building codes, and its homeowners. Our deep local expertise means every project we take on is optimized for the unique challenges of desert construction.
+        </p>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <div class="bg-blue/5 p-4 rounded-lg"><div class="font-bold navy">Summerlin</div><div class="text-sm text-gray-600">Luxury homes & remodels</div></div>
+          <div class="bg-blue/5 p-4 rounded-lg"><div class="font-bold navy">Henderson</div><div class="text-sm text-gray-600">Family renovations</div></div>
+          <div class="bg-blue/5 p-4 rounded-lg"><div class="font-bold navy">Paradise</div><div class="text-sm text-gray-600">Condo & commercial</div></div>
+          <div class="bg-blue/5 p-4 rounded-lg"><div class="font-bold navy">North LV</div><div class="text-sm text-gray-600">New construction</div></div>
+        </div>
+      </div>
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800" class="rounded-2xl shadow-2xl">
+        <div class="absolute -bottom-6 -right-6 bg-navy text-white p-6 rounded-xl shadow-2xl hidden md:block">
+          <div class="text-3xl font-black">100%</div>
+          <div class="text-sm text-blue-200">Locally Owned<br>& Operated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 hero-gradient text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="badge" style="background:rgba(201,161,91,.2)">CREDENTIALS</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4">Licensed. Bonded. Insured.</h2>
+        <p class="text-blue-100 mt-4">Your protection is our priority.</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/20">
+          <div class="text-3xl mb-3">📜</div>
+          <div class="font-bold">Nevada State License</div>
+          <div class="text-sm text-blue-200 mt-2">#0084521 • Class B General</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/20">
+          <div class="text-3xl mb-3">🛡️</div>
+          <div class="font-bold">Fully Bonded</div>
+          <div class="text-sm text-blue-200 mt-2">$2M Performance Bond</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/20">
+          <div class="text-3xl mb-3">🏥</div>
+          <div class="font-bold">Insured</div>
+          <div class="text-sm text-blue-200 mt-2">$5M Liability Coverage</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/20">
+          <div class="text-3xl mb-3">🏆</div>
+          <div class="font-bold">BBB A+ Rated</div>
+          <div class="text-sm text-blue-200 mt-2">Accredited Since 2001</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ SERVICES PAGE ============ -->
+<div id="services" class="page">
+
+  <section class="hero-gradient text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="badge" style="background:rgba(201,161,91,.2)">OUR SERVICES</span>
+      <h1 class="heading text-4xl md:text-6xl font-black mt-4">Complete Construction Solutions</h1>
+      <p class="text-blue-100 mt-4 text-lg max-w-2xl">Five core services. One trusted partner. Every project, every time.</p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800" class="rounded-2xl shadow-2xl">
+      <div>
+        <span class="badge">SERVICE 01</span>
+        <h2 class="heading text-3xl md:text-4xl font-black mt-4 navy">Home Remodeling</h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">Breathe new life into your Las Vegas home with our comprehensive remodeling services. From kitchen and bathroom renovations to whole-home transformations, we bring your vision to life with precision and style.</p>
+        <ul class="check-list mt-6 text-gray-700">
+          <li>Kitchen & bathroom remodels</li>
+          <li>Room additions & conversions</li>
+          <li>Open-concept floor plans</li>
+          <li>Premium finish selections</li>
+          <li>Permit handling included</li>
+        </ul>
+        <a href="#contact" class="btn-primary inline-block mt-6 px-7 py-3 rounded-md font-semibold">GET A REMODEL QUOTE →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="md:order-2">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" class="rounded-2xl shadow-2xl">
+      </div>
+      <div class="md:order-1">
+        <span class="badge">SERVICE 02</span>
+        <h2 class="heading text-3xl md:text-4xl font-black mt-4 navy">New Home Construction</h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">Build your dream home from the ground up. Our new construction team handles every phase — from site prep and foundation to final walkthrough — delivering a home built to last in the Nevada desert.</p>
+        <ul class="check-list mt-6 text-gray-700">
+          <li>Custom home design collaboration</li>
+          <li>Desert-climate engineering</li>
+          <li>Energy-efficient building systems</li>
+          <li>Smart home integration</li>
+          <li>Turnkey delivery</li>
+        </ul>
+        <a href="#contact" class="btn-primary inline-block mt-6 px-7 py-3 rounded-md font-semibold">START YOUR BUILD →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800" class="rounded-2xl shadow-2xl">
+      <div>
+        <span class="badge">SERVICE 03</span>
+        <h2 class="heading text-3xl md:text-4xl font-black mt-4 navy">Home Repairs</h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">From leaky faucets to structural fixes, our repair team handles it all with the same care and quality as our largest builds. Fast response, fair pricing, guaranteed work.</p>
+        <ul class="check-list mt-6 text-gray-700">
+          <li>Structural repairs & framing</li>
+          <li>Roofing & exterior work</li>
+          <li>Plumbing & electrical</li>
+          <li>Drywall & painting</li>
+          <li>Same-week scheduling available</li>
+        </ul>
+        <a href="#contact" class="btn-primary inline-block mt-6 px-7 py-3 rounded-md font-semibold">SCHEDULE A REPAIR →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <span class="badge">SERVICE 04</span>
+            <h2 class="heading text-2xl font-black mt-3 navy">Water Damage Restoration</h2>
+            <p class="text-gray-600 mt-3">24/7 emergency response for burst pipes, flooding, and leaks. We extract, dry, sanitize, and rebuild — fast.</p>
+            <a href="tel:+17025551234" class="btn-gold inline-block mt-5 px-6 py-3 rounded-md font-bold">🚨 EMERGENCY: (702) 555-1234</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden card-shadow">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <span class="badge">SERVICE 05</span>
+            <h2 class="heading text-2xl font-black mt-3 navy">Insurance Claim Restoration</h2>
+            <p class="text-gray-600 mt-3">We work directly with your insurance adjuster to maximize your claim and restore your property to pre-loss condition.</p>
+            <a href="#contact" class="btn-primary inline-block mt-5 px-6 py-3 rounded-md font-bold">FILE A CLAIM →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="badge">HOW WE WORK</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Our 5-Step Process</h2>
+        <p class="text-gray-600 mt-4">Transparent, organized, and designed for your peace of mind.</p>
+      </div>
+      <div class="space-y-8">
+        <div class="flex gap-6 items-start">
+          <div class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center font-black flex-shrink-0">1</div>
+          <div><h4 class="heading font-bold navy text-lg">Free Consultation</h4><p class="text-gray-600 mt-1">We visit your property, listen to your goals, and assess the scope — at no cost.</p></div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center font-black flex-shrink-0">2</div>
+          <div><h4 class="heading font-bold navy text-lg">Detailed Estimate</h4><p class="text-gray-600 mt-1">Transparent, itemized quote with no hidden fees. You approve before we begin.</p></div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center font-black flex-shrink-0">3</div>
+          <div><h4 class="heading font-bold navy text-lg">Permits & Planning</h4><p class="text-gray-600 mt-1">We handle all permits, HOA approvals, and project scheduling.</p></div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center font-black flex-shrink-0">4</div>
+          <div><h4 class="heading font-bold navy text-lg">Construction</h4><p class="text-gray-600 mt-1">Weekly updates, clean job sites, and master-level craftsmanship every day.</p></div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center font-black flex-shrink-0">5</div>
+          <div><h4 class="heading font-bold navy text-lg">Final Walkthrough</h4><p class="text-gray-600 mt-1">Your satisfaction is our standard. We don't consider the job done until you're thrilled.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 hero-gradient text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="heading text-3xl md:text-5xl font-black">Not Sure Which Service You Need?</h2>
+      <p class="text-blue-100 mt-4 text-lg">Book a free consultation and we'll recommend the best path forward.</p>
+      <a href="#contact" class="btn-gold inline-block mt-8 px-8 py-4 rounded-md font-bold text-lg shadow-xl">BOOK FREE CONSULTATION →</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ PROJECTS PAGE ============ -->
+<div id="projects" class="page">
+
+  <section class="hero-gradient text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="badge" style="background:rgba(201,161,91,.2)">OUR PORTFOLIO</span>
+      <h1 class="heading text-4xl md:text-6xl font-black mt-4">Projects That Speak for Themselves</h1>
+      <p class="text-blue-100 mt-4 text-lg max-w-2xl">Browse our recent work across the Las Vegas Valley.</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap gap-3 justify-center">
+      <button class="tab-btn active" onclick="filterProjects('all',this)">All Projects</button>
+      <button class="tab-btn" onclick="filterProjects('remodel',this)">Remodeling</button>
+      <button class="tab-btn" onclick="filterProjects('new',this)">New Construction</button>
+      <button class="tab-btn" onclick="filterProjects('repair',this)">Repairs</button>
+      <button class="tab-btn" onclick="filterProjects('restoration',this)">Restoration</button>
+    </div>
+  </section>
+
+  <section class="py-16" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6" id="projectGrid">
+      <div class="project-card rounded-xl bg-white card-shadow" data-cat="remodel">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <span class="text-xs text-blue font-bold">SUMMERLIN • REMODEL</span>
+          <h3 class="heading font-bold navy mt-1">Modern Kitchen Transformation</h3>
+          <p class="text-gray-600 text-sm mt-2">Full gut kitchen remodel with custom cabinetry and quartz countertops.</p>
+        </div>
+      </div>
+      <div class="project-card rounded-xl bg-white card-shadow" data-cat="new">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <span class="text-xs text-blue font-bold">HENDERSON • NEW BUILD</span>
+          <h3 class="heading font-bold navy mt-1">Desert Contemporary Home</h3>
+          <p class="text-gray-600 text-sm mt-2">3,800 sq ft custom home with smart systems and solar integration.</p>
+        </div>
+      </div>
+      <div class="project-card rounded-xl bg-white card-shadow" data-cat="restoration">
+        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <span class="text-xs text-blue font-bold">LAS VEGAS • RESTORATION</span>
+          <h3 class="heading font-bold navy mt-1">Water Damage Recovery</h3>
+          <p class="text-gray-600 text-sm mt-2">Complete restoration after major pipe burst — 45 days start to finish.</p>
+        </div>
+      </div>
+      <div class="project-card rounded-xl bg-white card-shadow" data-cat="remodel">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <span class="text-xs text-blue font-bold">PARADISE • REMODEL</span>
+          <h3 class="heading font-bold navy mt-1">Spa-Inspired Master Bath</h3>
+          <p class="text-gray-600 text-sm mt-2">Luxury bathroom with walk-in shower, soaking tub, and heated floors.</p>
+        </div>
+      </div>
+      <div class="project-card rounded-xl bg-white card-shadow" data-cat="new">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <span class="text-xs text-blue font-bold">NORTH LV • NEW BUILD</span>
+          <h3 class="heading font-bold navy mt-1">Family Estate</h3>
+          <p class="text-gray-600 text-sm mt-2">5-bedroom estate with pool, casita, and 3-car garage.</p>
+        </div>
+      </div>
+      <div class="project-card rounded-xl bg-white card-shadow" data-cat="repair">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <span class="text-xs text-blue font-bold">HENDERSON • REPAIR</span>
+          <h3 class="heading font-bold navy mt-1">Structural Foundation Repair</h3>
+          <p class="text-gray-600 text-sm mt-2">Complete foundation stabilization and crack repair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="badge">TRANSFORMATIONS</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Before & After</h2>
+        <p class="text-gray-600 mt-4">See the difference quality craftsmanship makes.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <div class="relative bg-gray-200 rounded-xl overflow-hidden h-80">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded text-sm font-bold">BEFORE</div>
+          </div>
+          <div class="relative bg-gray-200 rounded-xl overflow-hidden h-80 -mt-4 ml-8">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded text-sm font-bold">AFTER</div>
+          </div>
+          <h4 class="heading font-bold navy mt-4">Kitchen Remodel — Summerlin</h4>
+        </div>
+        <div>
+          <div class="relative bg-gray-200 rounded-xl overflow-hidden h-80">
+            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded text-sm font-bold">BEFORE</div>
+          </div>
+          <div class="relative bg-gray-200 rounded-xl overflow-hidden h-80 -mt-4 ml-8">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded text-sm font-bold">AFTER</div>
+          </div>
+          <h4 class="heading font-bold navy mt-4">Bathroom Renovation — Henderson</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16" style="background:var(--bg)">
+    <div class="max-w-4xl mx-auto px-6 bg-white rounded-2xl p-10 card-shadow border-l-4" style="border-color:var(--gold)">
+      <h3 class="heading text-2xl font-bold navy">📁 Future Project Upload Structure</h3>
+      <p class="text-gray-600 mt-3">This gallery is built to scale. Each new project can be added via Elementor's Portfolio widget with the following structure:</p>
+      <ul class="check-list mt-6 text-gray-700">
+        <li>Project title and category tag</li>
+        <li>Hero image + 5-10 gallery images</li>
+        <li>Before/after slider option</li>
+        <li>Location, square footage, timeline</li>
+        <li>Client testimonial (optional)</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ CONTACT PAGE ============ -->
+<div id="contact" class="page">
+
+  <section class="hero-gradient text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="badge" style="background:rgba(201,161,91,.2)">GET IN TOUCH</span>
+      <h1 class="heading text-4xl md:text-6xl font-black mt-4">Let's Build Together</h1>
+      <p class="text-blue-100 mt-4 text-lg max-w-2xl">Reach out today for a free consultation and estimate.</p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="heading text-3xl font-black navy">Send Us a Message</h2>
+        <p class="text-gray-600 mt-3">We respond within 24 hours — usually much sooner.</p>
+        <form class="mt-8 space-y-4" onsubmit="event.preventDefault();alert('Thank you! We will contact you within 24 hours.')">
+          <div class="grid md:grid-cols-2 gap-4">
+            <input type="text" placeholder="First Name *" required class="input-field">
+            <input type="text" placeholder="Last Name *" required class="input-field">
+          </div>
+          <input type="email" placeholder="Email Address *" required class="input-field">
+          <input type="tel" placeholder="Phone Number *" required class="input-field">
+          <select class="input-field">
+            <option>Service Needed *</option>
+            <option>Home Remodeling</option>
+            <option>New Home Construction</option>
+            <option>Home Repairs</option>
+            <option>Water Damage Restoration</option>
+            <option>Insurance Claim Restoration</option>
+          </select>
+          <textarea placeholder="Tell us about your project..." rows="5" class="input-field"></textarea>
+          <button type="submit" class="btn-primary w-full py-4 rounded-md font-bold text-lg">SEND MESSAGE →</button>
+        </form>
+      </div>
+      <div>
+        <div class="bg-blue/5 p-8 rounded-2xl border border-blue/10">
+          <h3 class="heading text-2xl font-bold navy">Contact Information</h3>
+          <div class="mt-6 space-y-5">
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">📞</div>
+              <div>
+                <div class="font-bold navy">Phone</div>
+                <a href="tel:+17025551234" class="text-blue hover:underline">(702) 555-1234</a>
+                <div class="text-xs text-gray-500 mt-1">24/7 Emergency Line</div>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">✉</div>
+              <div>
+                <div class="font-bold navy">Email</div>
+                <a href="mailto:info@arcogroup.com" class="text-blue hover:underline">info@arcogroup.com</a>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">📍</div>
+              <div>
+                <div class="font-bold navy">Office</div>
+                <div class="text-gray-700">1234 Construction Way<br>Las Vegas, NV 89101</div>
+              </div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">🕐</div>
+              <div>
+                <div class="font-bold navy">Hours</div>
+                <div class="text-gray-700">Mon–Fri: 7AM–6PM<br>Sat: 8AM–2PM</div>
+              </div>
+            </div>
+          </div>
+          <a href="tel:+17025551234" class="btn-gold w-full block text-center py-4 rounded-md font-bold mt-8">📞 CLICK TO CALL NOW</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-0">
+    <div class="max-w-7xl mx-auto px-6 pb-12">
+      <div class="rounded-2xl overflow-hidden shadow-2xl h-96 bg-gray-200 relative">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d204886.8878409382!2d-115.3107087!3d36.1699412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80beb782a4f57dd1%3A0x3accd5e6d5b379a3!2sLas+Vegas%2C+NV!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20" style="background:var(--bg)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="badge">SERVICE AREA</span>
+        <h2 class="heading text-3xl md:text-5xl font-black mt-4 navy">Proudly Serving All of Southern Nevada</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Las Vegas</div><div class="text-xs text-gray-500 mt-1">Primary Service Area</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Henderson</div><div class="text-xs text-gray-500 mt-1">Full Coverage</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Summerlin</div><div class="text-xs text-gray-500 mt-1">Full Coverage</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Paradise</div><div class="text-xs text-gray-500 mt-1">Full Coverage</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">North Las Vegas</div><div class="text-xs text-gray-500 mt-1">Full Coverage</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Boulder City</div><div class="text-xs text-gray-500 mt-1">By Appointment</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Enterprise</div><div class="text-xs text-gray-500 mt-1">Full Coverage</div></div>
+        <div class="bg-white p-5 rounded-xl card-shadow text-center"><div class="font-bold navy">Spring Valley</div><div class="text-xs text-gray-500 mt-1">Full Coverage</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy-dark text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+    <div>
+      <!-- Footer Logo -->
+      <a href="#" onclick="showPage('home');return false;" class="inline-block">
+        <img src="https://i.ibb.co.com/0y0V4rBj/logo1.png" 
+             alt="ARCO Group General Contractor Logo" 
+             class="h-24 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition">
+      </a>
+      <p class="text-blue-200 mt-4 text-sm leading-relaxed">Building Las Vegas one home at a time since 2001. Licensed, bonded, and insured.</p>
+      <div class="flex gap-3 mt-6">
+        <a href="#" class="w-10 h-10 bg-white/10 rounded flex items-center justify-center hover:bg-white/20 text-sm">FB</a>
+        <a href="#" class="w-10 h-10 bg-white/10 rounded flex items-center justify-center hover:bg-white/20 text-sm">IG</a>
+        <a href="#" class="w-10 h-10 bg-white/10 rounded flex items-center justify-center hover:bg-white/20 text-sm">YT</a>
+        <a href="#" class="w-10 h-10 bg-white/10 rounded flex items-center justify-center hover:bg-white/20 text-sm">LI</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="heading font-bold mb-4">Services</h4>
+      <ul class="space-y-2 text-sm text-blue-200">
+        <li><a href="#" class="hover:text-white">Home Remodeling</a></li>
+        <li><a href="#" class="hover:text-white">New Construction</a></li>
+        <li><a href="#" class="hover:text-white">Home Repairs</a></li>
+        <li><a href="#" class="hover:text-white">Water Damage</a></li>
+        <li><a href="#" class="hover:text-white">Insurance Claims</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="heading font-bold mb-4">Company</h4>
+      <ul class="space-y-2 text-sm text-blue-200">
+        <li><a href="#" class="hover:text-white">About Us</a></li>
+        <li><a href="#" class="hover:text-white">Our Projects</a></li>
+        <li><a href="#" class="hover:text-white">Testimonials</a></li>
+        <li><a href="#" class="hover:text-white">Careers</a></li>
+        <li><a href="#" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="heading font-bold mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm text-blue-200">
+        <li>📞 (702) 555-1234</li>
+        <li>✉ info@arcogroup.com</li>
+        <li>📍 1234 Construction Way<br>&nbsp;&nbsp;&nbsp;&nbsp;Las Vegas, NV 89101</li>
+        <li>🕐 Mon–Sat: 7AM–6PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-4 text-xs text-blue-300">
+    <div>© 2026 ARCO Group General Contractor. All rights reserved.</div>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-white">Privacy Policy</a>
+      <a href="#" class="hover:text-white">Terms of Service</a>
+      <a href="#" class="hover:text-white">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));
+    // Find the nav link matching the page and activate it
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach(link=>{
+      if(link.textContent.toLowerCase().includes(id) || (id==='home' && link.textContent==='Home')){
+        link.classList.add('active');
+      }
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function filterProjects(cat,btn){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#projectGrid .project-card').forEach(card=>{
+      if(cat==='all' || card.dataset.cat===cat) card.style.display='block';
+      else card.style.display='none';
+    });
+  }
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+    document.getElementById('scrollProgress').style.width=pct+'%';
+  });
+</script>
+</body>
+</html>
+
